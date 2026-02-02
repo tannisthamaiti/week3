@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Data: Bias, Fairness, and Discrimination</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: auto; padding: 20px; background-color: #f4f7f6; }
+        header { background: #2c3e50; color: #fff; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+        nav { background: #ecf0f1; padding: 10px; text-align: center; border-bottom: 2px solid #bdc3c7; }
+        nav a { margin: 0 15px; text-decoration: none; color: #2980b9; font-weight: bold; }
+        section { background: #fff; padding: 25px; margin-bottom: 20px; border-radius: 0 0 8px 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 5px; }
+        h3 { color: #2980b9; margin-top: 25px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .case-study { background-color: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; font-style: italic; }
+        .cite { font-size: 0.85em; color: #7f8c8d; vertical-align: super; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Information Research in the Age of Massive Data</h1>
+</header>
+
+<nav>
+    <a href="#benefits">Benefits & Ethics</a>
+    <a href="#bias">Understanding Bias</a>
+    <a href="#fairness">Defining Fairness</a>
+    <a href="#discrimination">Discrimination</a>
+</nav>
+
+<section id="benefits">
+    <h2>The Significance of Big Data</h2>
+    <p>In the age of massive data, information research plays a critical role in unlocking value while navigating ethical complexities.</p>
+    
+    
+
+    <h3>Key Benefits of Big Data</h3>
+    <ul>
+        <li><strong>Enhanced Decision Making:</strong> Provides deep insights through complex data analysis and predictive analytics.</li>
+        <li><strong>Increased Efficiency:</strong> Optimizes operations by identifying bottlenecks and informing automation strategies.</li>
+        <li><strong>Improved Customer Experience:</strong> Enables personalized marketing and proactive responses to customer needs.</li>
+        <li><strong>Innovation:</strong> Drives product development by identifying market gaps and industry trends.</li>
+    </ul>
+
+    <h3>Ethical Frameworks</h3>
+    <p>An ethical framework helps organizations determine what is morally right or wrong in data practices.</p>
+    <ul>
+        <li><strong>Duty-Based Ethics:</strong> Focuses on adherence to rules (like GDPR) and legal standards, regardless of the outcome.</li>
+        <li><strong>Outcome-Based Ethics:</strong> Evaluates actions based on whether they lead to the greatest good for the greatest number.</li>
+        <li><strong>Virtue Ethics:</strong> Emphasizes the character and integrity of those handling data, promoting transparency and honesty.</li>
+    </ul>
+</section>
+
+<section id="bias">
+    <h2>Understanding Bias in Big Data</h2>
+    <p><strong>Bias</strong> refers to systematic errors or prejudices in data collection, processing, or analysis that lead to unfair outcomes.</p>
+    
+    <h3>Socio-Technical Causes (Example: Sports Data)</h3>
+    <ul>
+        <li><strong>Data Generation:</strong> Some systems may not work in every stadium or league, leading to technical gaps. For example, poorer leagues may lack the high-tech tracking used in richer ones.</li>
+        <li><strong>Data Collection:</strong> Big leagues like the Premier League can afford GPS and high-tech tools that smaller leagues cannot, causing unequal data quality.</li>
+        <li><strong>Institutional Bias:</strong> Systems may favor certain groups; for instance, more data is traditionally collected for men's soccer than women's.</li>
+    </ul>
+
+    <h3>Representativeness and Modalities</h3>
+    <ul>
+        <li><strong>Data Modalities:</strong> Bias arises if certain types of data (e.g., wearable sensors vs. social media) are prioritized or excluded.</li>
+        <li><strong>Representativeness:</strong> Insights are biased if the data does not represent the entire population it is meant to describe.</li>
+    </ul>
+</section>
+
+<section id="fairness">
+    <h2>Fairness Definitions</h2>
+    <p>Fairness involves ensuring data-driven decisions are just and do not unfairly favor any group.</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Fairness Type</th>
+                <th>Definition</th>
+                <th>Example Scenario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Predicted Probabilities</strong></td>
+                <td>Likelihoods must align with actual outcomes for all groups.</td>
+                <td>If a model predicts 70% loan repayment, 70% of both minority and majority groups should actually repay.</td>
+            </tr>
+            <tr>
+                <td><strong>Similarity-Based</strong></td>
+                <td>Individuals with similar non-sensitive attributes should be treated equally.</td>
+                <td>Two job candidates with identical experience but different genders must receive the same score.</td>
+            </tr>
+            <tr>
+                <td><strong>Predicted Outcome</strong></td>
+                <td>Positive predictions should be distributed proportionally across all groups.</td>
+                <td>Ensuring loans are granted equitably across different races regardless of historical data.</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="discrimination">
+    <h2>Discrimination & Data Protection</h2>
+    <p><strong>Discrimination</strong> occurs when data-driven decisions systematically disadvantage individuals based on protected characteristics like race, gender, or age.</p>
+
+    <div class="case-study">
+        <strong>Case Example: Twitter Data</strong><br>
+        Hate speech detection algorithms may disproportionately flag tweets in African American Vernacular English (AAVE) as harmful because training sets reflect societal prejudices or over-represent specific linguistic styles as negative.
+    </div>
+
+    
+</section>
+
+</body>
+</html>
