@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3: Information Protection & Security</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --text: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        /* Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+        .tab-btn.active {
+            border-bottom: 3px solid var(--secondary);
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* Sections */
+        h2 { color: var(--primary); border-bottom: 2px solid var(--light); padding-bottom: 0.5rem; }
+        h3 { color: var(--secondary); margin-top: 1.5rem; }
+        
+        /* Interactive Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        /* Matrix Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th { background-color: var(--primary); color: white; }
+        
+        /* Quiz */
+        .quiz-container { margin-top: 2rem; }
+        .question { margin-bottom: 1.5rem; padding: 1rem; border: 1px solid #ddd; border-radius: 5px; }
+        .options label { display: block; margin: 0.5rem 0; cursor: pointer; }
+        .feedback { font-weight: bold; margin-top: 0.5rem; display: none; }
+        .correct { color: green; }
+        .incorrect { color: red; }
+        button.submit-btn {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        /* Citations style */
+        .cite {
+            font-size: 0.8em;
+            color: #777;
+            vertical-align: super;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Information Protection & Security</h1>
+    <p>Understanding Threats, Risks, and Controls</p>
+</header>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'protection')">Information Protection</button>
+        <button class="tab-btn" onclick="openTab(event, 'risk')">Risk Analysis</button>
+        <button class="tab-btn" onclick="openTab(event, 'threats')">Threats & Attacks</button>
+        <button class="tab-btn" onclick="openTab(event, 'controls')">Controls & Standards</button>
+        <button class="tab-btn" onclick="openTab(event, 'quiz')">Knowledge Check</button>
+    </div>
+
+    <div id="protection" class="tab-content active">
+        <h2>Importance & Classification</h2>
+        <p>In business, information is a critical asset that differentiates companies and provides leverage.</p>
+        
+        <h3>Information Lifecycle Management</h3>
+        <p>Proper classification involves managing data through various stages:</p>
+        <ul style="list-style-type: none; padding: 0;">
+            <li><strong>Labeling:</strong> Headers/footers specifying handling.</li>
+            <li><strong>Distribution:</strong> Controlling who sees the data.</li>
+            <li><strong>Duplication:</strong> How copies are made and handled.</li>
+            <li><strong>Release:</strong> How it is provided to outsiders.</li>
+            <li><strong>Storage & Encryption:</strong> Where it is kept and if it is encrypted.</li>
+            <li><strong>Disposal:</strong> Shredding or wiping data.</li>
+            <li><strong>Method of transmission:</strong> email, fax, print and mail .</li>
+        </ul>
+
+        <h3>Classification Levels</h3>
+        <div class="card-grid">
+            <div class="card">
+                <h4>1. Top Secret</h4>
+                <p>Highest level of national security classification.</p>
+            </div>
+            <div class="card">
+                <h4>2. Secret</h4>
+                <p>Mid-level classification for sensitive data.</p>
+            </div>
+            <div class="card">
+                <h4>3. Confidential</h4>
+                <p>Basic level of classified information.</p>
+            </div>
+            <div class="card" style="border-left-color: #999;">
+                <h4>Unclassified</h4>
+                <p>Information not meeting classification requirements.</p>
+            </div>
+        </div>
+
+        <h3>Case Study: InterNex</h3>
+        <p><strong>Philosophy:</strong> InterNex believed the internet should be open to everyone and used only basic authentication.</p>
+        <p><strong>Result:</strong> Systems were compromised. Famous attacker <strong>Kevin Mitnick</strong> used their systems to launch IP spoofing attacks.</p>
+        <h3>1. Evolution of Security</h3>
+        <p>Security philosophies have shifted over time, creating a tension between protection and accessibility.</p>
+        
+        <div class="img-container">
+            <img src="InformationSecurity.png" alt="Diagram showing Government Security (Closed/Locked) vs Academic Security (Open-Access)" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='<br><em>(Image missing: Please ensure evolution.png is in the folder)</em>'">
+            <div class="caption">Figure: The shift from "Closed and Locked" Government models to "Open-Access" Academic models.</div>
+        </div>
+        <h3>2. Open-Access Models: Case Studies</h3>
+        <p>A closer look at how modern journals handle the balance of information accessibility versus revenue.</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Case Study</th>
+                    <th style="width: 20%;">Model Type</th>
+                    <th style="width: 30%;">Description</th>
+                    <th style="width: 30%;">Discussion Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>PLOS ONE</strong></td>
+                    <td>Gold Open Access</td>
+                    <td>Adopted fully open access from inception.Uses Article Processing Charges (APCs) for funding.</td>
+                    <td>
+                        <ul>
+                            <li>Benefits/Challenges of Gold model?</li>
+                            <li>Impact of APCs on underfunded researchers?</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Nature Communications</strong></td>
+                    <td>Hybrid Open Access</td>
+                    <td>Allows authors to choose between subscription-based or open access publishing.</td>
+                    <td>
+                        <ul>
+                            <li>How does this balance stakeholder interests?</li>
+                            <li>Financial implications for authors vs. journal?</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>3. Modern Information security (Sharing among many consumers many channels)</h3>
+        <p>Interconnected information system where a central data hub distributes information across diverse channels. System includes seamless flow of data to various consumers, including smart homes, autonomous vehicles, mobile devices, and satellite networks, visualizing the complexity of modern digital connectivity.</p>
+        <div class="img-container">
+            <img src="dataFlow.png" alt="Diagram showing Government Security (Closed/Locked) vs Academic Security (Open-Access)" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='<br><em>(Image missing: Please ensure evolution.png is in the folder)</em>'" style="width: 800px; height: auto; display: block; margin: 0 auto;">
+            <div class="caption">Figure: Modern information systems distribute data across diverse consumers and interconnected channels..</div>
+        </div>
+    </div>
+
+    <div id="risk" class="tab-content">
+        <h2>Risk Analysis</h2>
+        <p>Risk analysis for organizations is the process of identifying, assessing, and prioritizing risks to minimize the impact of potential threats. This involves evaluating the probability of occurrence, potential impact on the organization, and determining appropriate measures to manage or mitigate these risks. Effective risk analysis helps organizations protect their assets, maintain compliance with regulations, and ensure business continuity.</p>
+        
+        <div class="card">
+            <h3>The 5 Steps of Risk Analysis</h3>
+            <ol>
+                <li><strong>Identification:</strong> Determining what could go wrong.</li>
+                <li><strong>Assessment:</strong> Analyzing likelihood and impact.</li>
+                <li><strong>Prioritization:</strong> Ranking risks by severity.</li>
+                <li><strong>Mitigation:</strong> Strategies to manage/reduce risk.</li>
+                <li><strong>Monitoring:</strong> Continuous review.</li>
+            </ol>
+        </div>
+
+        <h3>Key Frameworks</h3>
+        <ul>
+            <li><strong>NIST RMF:</strong> Risk Management Framework.</li>
+            <li><strong>ISO 31000:</strong> Risk Management Guidelines.</li>
+            <li><strong>COSO ERM:</strong> Enterprise Risk Management.</li>
+        </ul>
+    </div>
+
+    <div id="threats" class="tab-content">
+        <h2>Threats vs. Attacks</h2>
+        <p><strong>Threat:</strong> A circumstance with the <em>potential</em> to cause harm (intentional or accidental).<br>
+        </p>
+
+        <p>A threat in the context of information security refers to any circumstance or event that has the potential to cause harm to an information system or organization. Threats can exploit vulnerabilities to compromise the confidentiality, integrity, or availability of information and systems. They can originate from various sources and can be intentional or accidental</p>
+        <h3>Aspects of Threats</h3>
+        <ul style="list-style-type: none; padding: 0;">
+            <li><strong>Origin and Nature:</strong> Threats can originate from various sources and may be either intentional (malicious) or accidental.</li>
+            <li><strong>Threat vectors:</strong> This is the specific path or means by which a threat gains access to a computer system or network to deliver a malicious outcome.</li>
+            <li><strong>Sources and Targets:</strong> Identifying who is initiating the threat and what specific assets are being aimed at.</li>
+            <li><strong>Malicious Mobile Code:</strong> Identifying who is initiating the threat and what specific assets are being aimed at.</li>
+            <li><strong>Advanced Persistent Threats:</strong> Sophisticated, long-term attacks typically carried out by well-resourced groups.</li>
+        </ul>
+        <h3>Table: Security control for threat vectors</h3>
+        <table class="controls-table">
+    <thead>
+        <tr>
+            <th>Function</th>
+            <th>Physical</th>
+            <th>Administrative</th>
+            <th>Logical/Technical</th>
+            <th>Operational</th>
+            <th>Visual</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="category-cell">Preventive</td>
+            <td>Locks </td>
+            <td></td>
+            <td>Firewall, IPS </td>
+            <td>Guards on station </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="category-cell">Detective</td>
+            <td>Cameras </td>
+            <td></td>
+            <td>IDS, logging SIEM </td>
+            <td>Guards Patrolling </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="category-cell">Deterrent</td>
+            <td>Signs, barbed wire </td>
+            <td>Security policies </td>
+            <td>Warning messages </td>
+            <td>Visible Guards and Camera </td>
+            <td>Dynamic pop-up and warning </td>
+        </tr>
+        <tr>
+            <td class="category-cell">Corrective</td>
+            <td></td>
+            <td>HR penalties </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="category-cell">Recovery</td>
+            <td></td>
+            <td></td>
+            <td>Backup data and replication </td>
+            <td>Disaster recovery plans </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="category-cell">Compensation</td>
+            <td></td>
+            <td></td>
+            <td>Manual process </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+        <p><strong>Attack:</strong> A <em>deliberate</em> attempt to exploit vulnerabilities.</p>
+        <h3>Common Attack Vectors</h3>
+        <p>In information security, an attack refers to any deliberate attempt to gain unauthorized access to a system, network, application, or data to cause harm, steal information, disrupt operations, or exploit vulnerabilities. Attacks can be carried out by individuals, groups, or organizations with malicious intent (known as attackers or threat actors)</p>
+        <div class="card-grid">
+            <div class="card">
+                <h4>DoS / DDoS</h4>
+                <p>Overloading a system to disrupt availability.</p>
+            </div>
+            <div class="card">
+                <h4>Malware</h4>
+                <p>Viruses, worms, and Trojans infecting systems.</p>
+            </div>
+            <div class="card">
+                <h4>Phishing</h4>
+                <p>Deceptive emails to steal sensitive info.</p>
+            </div>
+            <div class="card">
+                <h4>Ransomware</h4>
+                <p>Encrypting data and demanding payment.</p>
+            </div>
+            <div class="card">
+                <h4>Zero-Day</h4>
+                <p>Leveraging a vulnerability before it is patched.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="controls" class="tab-content">
+        <h2>Security Controls Matrix</h2>
+        <p>Controls are measures taken to mitigate threats. They are categorized by function (Preventive, Detective) and type (Physical, Technical/Logical).</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Preventive (Stop it)</th>
+                    <th>Detective (Spot it)</th>
+                    <th>Deterrent (Discourage it)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Physical</strong></td>
+                    <td>Locks, Guards </td>
+                    <td>Cameras, Patrols </td>
+                    <td>Signs, Fences, Visible Guards </td>
+                </tr>
+                <tr>
+                    <td><strong>Technical / Logical</strong></td>
+                    <td>Firewall, IPS </td>
+                    <td>IDS, Logging, SIEM </td>
+                    <td>Dynamic Warnings, Pop-ups </td>
+                </tr>
+                <tr>
+                    <td><strong>Administrative</strong></td>
+                    <td>Security Policies</td>
+                    <td>Audits</td>
+                    <td>HR Penalties, Warning Messages</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Regulations</h3>
+        <ul>
+            <li><strong>GLBA:</strong> Financial sector (Banks/Lenders).</li>
+            <li><strong>HIPAA:</strong> Healthcare sector (Patient info).</li>
+            <li><strong>NERC CIP:</strong> Critical infrastructure (Electric/Power).</li>
+        </ul>
+    </div>
+
+    <div id="quiz" class="tab-content">
+        <h2>Knowledge Check</h2>
+        <div class="quiz-container">
+            <div class="question" id="q1">
+                <p><strong>1. Which attack involves encrypting data and demanding payment?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="wrong"> Phishing</label>
+                    <label><input type="radio" name="q1" value="correct"> Ransomware</label>
+                    <label><input type="radio" name="q1" value="wrong"> SQL Injection</label>
+                </div>
+                <p class="feedback" id="f1"></p>
+            </div>
+
+            <div class="question" id="q2">
+                <p><strong>2. According to the slides, what was the main security failure of InterNex?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="wrong"> Lack of Firewalls</label>
+                    <label><input type="radio" name="q2" value="correct"> Open-access philosophy / Weak authentication</label>
+                    <label><input type="radio" name="q2" value="wrong"> Physical theft of servers</label>
+                </div>
+                <p class="feedback" id="f2"></p>
+            </div>
+
+            <div class="question" id="q3">
+                <p><strong>3. Which regulation applies specifically to the healthcare sector?</strong></p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="correct"> HIPAA</label>
+                    <label><input type="radio" name="q3" value="wrong"> GLBA</label>
+                    <label><input type="radio" name="q3" value="wrong"> SOX</label>
+                </div>
+                <p class="feedback" id="f3"></p>
+            </div>
+
+            <button class="submit-btn" onclick="checkQuiz()">Submit Answers</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+
+    function checkQuiz() {
+        checkQuestion('q1', 'f1', 'Correct! Ransomware encrypts data for payment.');
+        checkQuestion('q2', 'f2', 'Correct! Their ideology of "open access" led to compromised systems.');
+        checkQuestion('q3', 'f3', 'Correct! HIPAA protects patient information.');
+    }
+
+    function checkQuestion(qId, fId, successMsg) {
+        var options = document.getElementsByName(qId);
+        var feedback = document.getElementById(fId);
+        var selected = false;
+        
+        for (var i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                selected = true;
+                feedback.style.display = "block";
+                if (options[i].value === "correct") {
+                    feedback.innerText = successMsg;
+                    feedback.className = "feedback correct";
+                } else {
+                    feedback.innerText = "Incorrect. Please try again.";
+                    feedback.className = "feedback incorrect";
+                }
+            }
+        }
+        if (!selected) {
+            feedback.style.display = "block";
+            feedback.innerText = "Please select an answer.";
+        }
+    }
+</script>
+
+</body>
+</html>
