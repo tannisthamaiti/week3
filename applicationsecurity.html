@@ -466,28 +466,6 @@ print(f"RBAC: {rbac_authorize('Reader')}")
 print(f"ABAC: {abac_authorize('Admin', 22, 'Internal_Network')}") # Denied due to time</code></pre>
             </div>
         </section>
-
-        <section class="card p-8 rounded-3xl shadow-2xl">
-            <div class="flex flex-col items-center mb-6">
-                <h2 class="text-2xl font-bold mb-8">The Governance Hierarchy </h2>
-                
-                <div class="w-full space-y-3">
-                    <div class="flex items-center p-4 bg-slate-800/40 rounded-xl">
-                        <span class="w-24 font-bold text-sky-400 uppercase text-xs">Policy</span>
-                        <span class="text-slate-300 text-sm italic">"Broad intent: Should we encrypt?" </span>
-                    </div>
-                    <div class="flex items-center p-4 bg-slate-800/40 rounded-xl">
-                        <span class="w-24 font-bold text-sky-400 uppercase text-xs">Standard</span>
-                        <span class="text-slate-300 text-sm italic">"Requirements: Use AES." </span>
-                    </div>
-                    <div class="flex items-center p-4 bg-slate-800/40 rounded-xl">
-                        <span class="w-24 font-bold text-sky-400 uppercase text-xs">Procedure</span>
-                        <span class="text-slate-300 text-sm italic">"Steps: Log in, enter enable mode." </span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section class="bg-indigo-600 p-8 rounded-3xl shadow-2xl relative overflow-hidden">
             <div class="relative z-10">
                 <h2 class="text-2xl font-bold mb-6 flex items-center">
@@ -513,3 +491,4 @@ print(f"ABAC: {abac_authorize('Admin', 22, 'Internal_Network')}") # Denied due t
 </body>
 
 </html>
+
