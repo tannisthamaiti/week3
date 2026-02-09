@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Masterclass: Week 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .highlight-blue { color: #38bdf8; }
+        .code-container { background: #011627; border-radius: 8px; border-left: 4px solid #38bdf8; }
+        pre { font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #d6deeb; }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border: 1px solid #ccc;
+            max-width: 800px;
+            width: 100%;
+        }
+        .pyramid-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 30px;
+        }
+
+        /* CSS Triangle for the top */
+        .triangle-top {
+            width: 0;
+            height: 0;
+            border-left: 70px solid transparent;
+            border-right: 70px solid transparent;
+            border-bottom: 60px solid #e0e0e0;
+            margin-bottom: -1px;
+        }
+
+        .pyramid-level {
+            text-align: center;
+            color: white;
+            padding: 15px 10px;
+            margin-bottom: 5px;
+            position: relative;
+            /* Create trapezoid shape */
+            clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
+        }
+
+        .policy {
+            background-color: #6ab1d0;
+            width: 260px;
+        }
+
+        .standard {
+            background-color: #7896b6;
+            width: 320px;
+        }
+
+        .procedure {
+            background-color: #8a8db1;
+            width: 380px;
+        }
+
+        .technical-control {
+            background-color: #a58ba8;
+            width: 440px;
+            /* Wider trapezoid for base */
+            clip-path: polygon(5% 0, 95% 0, 100% 100%, 0 100%);
+        }
+
+        .level-title {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .level-question {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .descriptions {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding-top: 60px; /* Align with first pyramid block */
+        }
+
+        .description-block {
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+
+        .description-block p {
+            margin: 5px 0;
+        }
+
+        .description-block ol, .description-block ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body class="gradient-bg text-slate-200 min-h-screen font-sans pb-12">
+
+    <header class="py-16 px-4 text-center">
+        <h1 class="text-5xl font-black mb-4 tracking-tight">
+            🛡️ Security <span class="highlight-blue">Fundamentals</span>
+        </h1>
+        <p class="text-slate-400 text-lg max-w-xl mx-auto italic">
+            "Methods and guidelines for application and physical security." 
+        </p>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <section class="card p-8 rounded-3xl shadow-2xl">
+            <div class="flex items-center mb-6">
+                <div class="bg-amber-500/20 p-3 rounded-xl mr-4">🛠️</div>
+                <h2 class="text-2xl font-bold">Secure Development Lifecycle </h2>
+            </div>
+            <p class="text-slate-400 mb-6">A systematic process for building software that ensures security is addressed at every phase, rather than as an afterthought. It acts as a defensive framework to mitigate risks before a product reaches production.</p>
+            
+            
+            
+        </section>
+        <section class="card p-8 rounded-3xl shadow-2xl border-l-4 border-amber-500">
+    <div class="flex items-center mb-6">
+        
+    </div>
+
+    <p class="text-slate-400 mb-8">The SDLC is comprised of specific stages designed to protect data and systems by blocking the path from <strong>Threat</strong> to <strong>Attack</strong>.</p>
+
+    <div class="grid md:grid-cols-1 gap-4 mb-8">
+        <div class="flex items-start p-4 bg-slate-800/50 rounded-2xl border border-slate-700">
+            <div class="text-amber-400 font-bold mr-4">01</div>
+            <div>
+                <h3 class="font-bold text-slate-200">Planning & Requirements</h3>
+                <p class="text-sm text-slate-400">Defining security goals and identifying sensitive data that requires protection.</p>
+            </div>
+        </div>
+
+        <div class="flex items-start p-4 bg-slate-800/50 rounded-2xl border border-slate-700">
+            <div class="text-amber-400 font-bold mr-4">02</div>
+            <div>
+                <h3 class="font-bold text-slate-200">Design</h3>
+                <p class="text-sm text-slate-400">Creating the architecture and conducting <strong>Threat Modeling</strong> to anticipate how an attacker might strike.</p>
+            </div>
+        </div>
+
+        <div class="flex items-start p-4 bg-slate-800/50 rounded-2xl border border-slate-700">
+            <div class="text-amber-400 font-bold mr-4">03</div>
+            <div>
+                <h3 class="font-bold text-slate-200">Implementation (Coding)</h3>
+                <p class="text-sm text-slate-400">Writing secure code and using tools like <strong>Static Analysis</strong> to find vulnerabilities early.</p>
+            </div>
+        </div>
+
+        <div class="flex items-start p-4 bg-slate-800/50 rounded-2xl border border-slate-700">
+            <div class="text-amber-400 font-bold mr-4">04</div>
+            <div>
+                <h3 class="font-bold text-slate-200">Verification (Testing)</h3>
+                <p class="text-sm text-slate-400">Testing the application for weaknesses using automated and manual security reviews.</p>
+            </div>
+        </div>
+
+        <div class="flex items-start p-4 bg-slate-800/50 rounded-2xl border border-slate-700">
+            <div class="text-amber-400 font-bold mr-4">05</div>
+            <div>
+                <h3 class="font-bold text-slate-200">Release & Maintenance</h3>
+                <p class="text-sm text-slate-400">Deploying securely and monitoring for new threats using tools like <strong>Microsoft Defender for Cloud</strong>.</p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="code-container p-6">
+        <p class="text-xs text-slate-500 mb-3 uppercase tracking-widest font-bold">// SDLC Defensive Logic: Mitigating Attacks</p>
+        <pre><code># Threat: SQL Injection / Data Tampering
+# SDLC Defense: Implementation & Verification (Input Sanitization + Hashing)
+
+import hashlib
+
+def secure_store_data(user_input):
+    # 1. Implementation Phase: Sanitize/Standardize
+    clean_data = str(user_input).strip() 
+    
+    # 2. Integrity Phase: Generate Hash 
+    data_hash = hashlib.sha256(clean_data.encode()).hexdigest()
+    
+    return {"data": clean_data, "integrity_token": data_hash}
+
+# Verification: If the hash changes, we know an attack occurred
+entry = secure_store_data("Sensitive Account Info")
+print(f"SDLC Goal (Integrity): {entry['integrity_token']}")</code></pre>
+    </div>
+</section>
+
+        <section class="card p-8 rounded-3xl shadow-2xl">
+            <div class="flex items-center mb-6">
+                <div class="bg-blue-500/20 p-3 rounded-xl mr-4">🧬</div>
+                <h2 class="text-2xl font-bold">Information Protection Model: The CIA Triad Model </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-4 mb-8">
+                <div class="p-5 rounded-2xl bg-slate-800/50 border border-slate-700">
+                    <h3 class="text-sky-400 font-bold mb-2">Confidentiality</h3>
+                    <p class="text-sm text-slate-400">Encrypting and decrypting data using simple algorithms.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-800/50 border border-slate-700">
+                    <h3 class="text-emerald-400 font-bold mb-2">Integrity</h3>
+                    <p class="text-sm text-slate-400">Using hashes to verify data has not been altered.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-slate-800/50 border border-slate-700">
+                    <h3 class="text-purple-400 font-bold mb-2">Availability</h3>
+                    <p class="text-sm text-slate-400">Simulating service uptime checks to ensure resource access.</p>
+                </div>
+            </div>
+
+            <div class="code-container p-6">
+                <p class="text-xs text-slate-500 mb-3 uppercase tracking-widest font-bold">// CIA Triad Implementation</p>
+                <pre><code>import hashlib
+from cryptography.fernet import Fernet
+
+# 1. CONFIDENTIALITY
+key = Fernet.generate_key()
+fernet = Fernet(key)
+encrypted = fernet.encrypt("Secret message".encode())
+
+# 2. INTEGRITY
+def get_hash(data):
+    return hashlib.sha256(data.encode()).hexdigest()
+
+# 3. AVAILABILITY 
+def ping_service(status):
+    return "Online" if status else "Offline"</code></pre>
+            </div>
+        </section>
+        <section class="card p-8 rounded-3xl shadow-2xl">
+            
+                <h2 class="text-2xl font-bold">Procedures, standard and policy </h2>
+            
+            <div class="container">
+                <div class="content-wrapper">
+            <div class="pyramid-container">
+                <div class="triangle-top"></div>
+                
+                <div class="pyramid-level policy">
+                    <span class="level-title">POLICY</span>
+                    <span class="level-question">Why do we need to do this?</span>
+                    <p><span class="label">Requirement:</span> All company data must be encrypted to ensure confidentiality.</p>
+                </div>
+                
+                <div class="pyramid-level standard">
+                    <span class="level-title">STANDARD</span>
+                    <span class="level-question">What is required to achieve it?</span>
+                    <p><span class="label">Requirement:</span> AES-256 is the mandated encryption algorithm for all mobile devices.</p>
+                </div>
+                
+                <div class="pyramid-level procedure">
+                    <span class="level-title">PROCEDURE</span>
+                    <span class="level-question">How do we do what is required?</span>
+                    <p><span class="label">Steps:</span> 1. Open BitLocker settings. 2. Select the C: Drive. 3. Generate a 256-bit recovery key.</p>
+                </div>
+                
+                <div class="pyramid-level technical-control">
+                    <span class="level-title">TECHNICAL CONTROL</span>
+                    <span class="level-question">How do we regulate necessary operations?</span>
+                    <p><span class="label">Enforcement:</span> Active Directory script that denies system access if BitLocker is disabled.</p>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+    *BitLocker is a full-disk encryption feature included with Microsoft Windows versions starting with Windows Vista. It is designed to protect data by providing encryption for entire volumes, ensuring that even if a device is lost or stolen, the information on the drive remains inaccessible to unauthorized users
+        </section>
+<section class="card p-8 rounded-3xl shadow-2xl border-t-4 border-sky-500">
+            <div class="flex items-center mb-6">
+                <div class="bg-sky-500/20 p-3 rounded-xl mr-4">🆔</div>
+                <h2 class="text-2xl font-bold">Authentication</h2>
+            </div>
+            
+            <p class="text-slate-400 mb-8">
+                Authentication is the process of verifying the identity of a user or system. 
+                It ensures that the person or system requesting access is who they claim to be.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-10">
+                <div class="p-6 rounded-2xl bg-slate-800/50 border border-slate-700">
+                    <h3 class="text-sky-400 font-bold mb-3">1. Credentials</h3>
+                    <ul class="text-xs space-y-2 text-slate-300">
+                        <li><strong>Passwords:</strong> Most common form.</li>
+                        <li><strong>Biometrics:</strong> Fingerprints or facial recognition.</li>
+                        <li><strong>Tokens:</strong> OTPs, smart cards, or key fobs.</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-800/50 border border-slate-700">
+                    <h3 class="text-emerald-400 font-bold mb-3">2. MFA</h3>
+                    <p class="text-xs text-slate-400 mb-3">Uses two or more methods to verify identity:</p>
+                    <ul class="text-[10px] space-y-1 text-slate-300">
+                        <li>• Something you know (Password)</li>
+                        <li>• Something you have (Token)</li>
+                        <li>• Something you are (Biometrics)</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-800/50 border border-slate-700">
+                    <h3 class="text-purple-400 font-bold mb-3">3. Protocols</h3>
+                    <p class="text-xs text-slate-400 mb-2">Facilitates secure identity exchange:</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-slate-900 rounded text-[10px] text-sky-300 border border-sky-900/50">OAuth</span>
+                        <span class="px-2 py-1 bg-slate-900 rounded text-[10px] text-sky-300 border border-sky-900/50">SAML</span>
+                        <span class="px-2 py-1 bg-slate-900 rounded text-[10px] text-sky-300 border border-sky-900/50">OpenID</span>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="code-container p-6">
+                <p class="text-xs text-slate-500 mb-3 uppercase tracking-widest font-bold">// Simple MFA Logic Simulation</p>
+                <pre><code>def authenticate_user(password, provided_otp, actual_otp):
+    # Requirement: Two-Factor Authentication
+    primary_auth = (password == "SecurePass123")
+    secondary_auth = (provided_otp == actual_otp)
+    
+    if primary_auth and secondary_auth:
+        return "✅ Authentication Successful: Identity Verified"
+    elif primary_auth:
+        return "⚠️ MFA Required: Please enter the correct OTP"
+    else:
+        return "❌ Authentication Failed: Invalid Credentials"
+
+# Test MFA
+print(authenticate_user("SecurePass123", "555666", "555666"))</code></pre>
+            </div>
+        </section>
+        <section class="card p-8 rounded-3xl shadow-2xl">
+            <div class="flex items-center mb-6">
+                <div class="bg-emerald-500/20 p-3 rounded-xl mr-4">🔑</div>
+                <h2 class="text-2xl font-bold">Authorization </h2>
+            </div>
+            <p class="text-slate-400 mb-6"><p class="text-slate-400 mb-6">Authorization is the process of determining what resources and actions a verified user is permitted to access. It involves granting or denying permissions based on predefined rules or policies.</p></p>
+        </section>
+
+        <section class="card p-8 rounded-3xl shadow-2xl border-t-4 border-emerald-500">
+            <div class="flex items-center mb-6">
+                <div class="bg-emerald-500/20 p-3 rounded-xl mr-4">🔐</div>
+                <h2 class="text-2xl font-bold">Components of Authorization</h2>
+            </div>
+            
+            <p class="text-slate-400 mb-8">
+                Authorization is the process of determining what resources and actions a verified user is permitted to access. 
+                It involves granting or denying permissions based on predefined rules.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-10">
+                <div class="p-6 rounded-2xl bg-slate-800/50 border border-slate-700 hover:border-emerald-500/50 transition-colors">
+                    <h3 class="text-emerald-400 font-bold mb-3 flex items-center">
+                        <span class="mr-2">🏗️</span> Access Control Models
+                    </h3>
+                    <ul class="text-xs space-y-3 text-slate-300">
+                        <li><strong>RBAC:</strong> Access based on organizational roles.</li>
+                        <li><strong>ABAC:</strong> Decisions based on attributes like time or location.</li>
+                        <li><strong>DAC:</strong> Resource owner controls access.</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-800/50 border border-slate-700 hover:border-sky-500/50 transition-colors">
+                    <h3 class="text-sky-400 font-bold mb-3 flex items-center">
+                        <span class="mr-2">📝</span> Permissions
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-3">Defines specific allowed actions:</p>
+                    <div class="flex gap-2">
+                        <span class="px-2 py-1 bg-slate-900 rounded text-[10px] border border-slate-700">READ</span>
+                        <span class="px-2 py-1 bg-slate-900 rounded text-[10px] border border-slate-700">WRITE</span>
+                        <span class="px-2 py-1 bg-slate-900 rounded text-[10px] border border-slate-700">DELETE</span>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-800/50 border border-slate-700 hover:border-purple-500/50 transition-colors">
+                    <h3 class="text-purple-400 font-bold mb-3 flex items-center">
+                        <span class="mr-2">⚖️</span> Access Policies
+                    </h3>
+                    <ul class="text-xs space-y-2 text-slate-300">
+                        <li>Rules and conditions for granting access.</li>
+                        <li>Often enforced via policy management tools.</li>
+                        <li>Example: Access limited to 1 month.</li>
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="code-container p-6 mt-6">
+                <p class="text-xs text-slate-500 mb-3 uppercase tracking-widest font-bold">// Authorization Logic Simulation</p>
+                <pre><code># Component Interaction: Model + Policy + Permission
+def authorize_request(user_role, action, duration_days):
+    # 1. Model (RBAC)
+    permissions = {"Admin": ["read", "write", "delete"], "User": ["read"]}
+    
+    # 2. Permission Check
+    if action not in permissions.get(user_role, []):
+        return "❌ Denied: Insufficient Permissions"
+        
+    # 3. Access Policy Check (Example: Temporary Access)
+    if duration_days > 30:
+        return "❌ Denied: Policy limits access to 30 days"
+        
+    return f"✅ Authorized: {user_role} may {action}"
+
+print(authorize_request("User", "read", 15))  # Success
+print(authorize_request("Admin", "delete", 45)) # Policy Violation</code></pre>
+            </div>
+        </section>
+
+        <section class="card p-8 rounded-3xl shadow-2xl">
+            <div class="flex items-center mb-6">
+                <div class="bg-emerald-500/20 p-3 rounded-xl mr-4">🔑</div>
+                <h2 class="text-2xl font-bold">Identity & Access Management (IAM) </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold border-l-4 border-sky-500 pl-3">RBAC (Role-Based) </h3>
+                    <p class="text-slate-400 text-sm">Access is granted based on organizational roles. </p>
+                    <ul class="text-sm space-y-2 list-disc list-inside text-slate-300">
+                        <li>Grant Least Privilege. </li>
+                        <li>Avoid broad role scopes. </li>
+                        <li>Max 3 subscription owners. </li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold border-l-4 border-emerald-500 pl-3">ABAC (Attribute-Based) </h3>
+                    <p class="text-slate-400 text-sm">Decisions based on attributes like time or location. </p>
+                    <ul class="text-sm space-y-2 list-disc list-inside text-slate-300">
+                        <li>Time-based (9 AM - 5 PM). </li>
+                        <li>Location (Specific IP range). </li>
+                        <li>Temporary (e.g., 1 month access). </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="code-container p-6 mt-8">
+                <p class="text-xs text-slate-500 mb-3 uppercase tracking-widest font-bold">// RBAC vs ABAC Logic</p>
+                <pre><code># --- RBAC Logic ---
+def rbac_authorize(user_role):
+    # Access based strictly on the 'Role' attribute
+    if user_role == "Subscription Owner":
+        return "✅ Access Granted"
+    return "❌ Access Denied"
+
+# --- ABAC Logic ---
+def abac_authorize(user_role, current_hour, location):
+    # Access based on Role + Time + Location
+    if (user_role == "Admin" and 
+        9 <= current_hour <= 17 and 
+        location == "Internal_Network"):
+        return "✅ Contextual Access Granted"
+    return "❌ Access Denied: Policy conditions not met"
+
+# Testing IAM Models
+print(f"RBAC: {rbac_authorize('Reader')}")
+print(f"ABAC: {abac_authorize('Admin', 22, 'Internal_Network')}") # Denied due to time</code></pre>
+            </div>
+        </section>
+
+        <section class="card p-8 rounded-3xl shadow-2xl">
+            <div class="flex items-center mb-6">
+                <div class="bg-red-500/20 p-3 rounded-xl mr-4">🏢</div>
+                <h2 class="text-2xl font-bold">Physical Security </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-4 bg-slate-800/40 rounded-xl">
+                    <h4 class="font-bold text-red-400 mb-2">Access Controls </h4>
+                    <ul class="text-sm space-y-1 text-slate-300">
+                        <li>• Biometrics (Retina/Fingerprint) </li>
+                        <li>• Tokens & Smart Cards </li>
+                        <li>• Multi-Factor Authentication (MFA) </li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-slate-800/40 rounded-xl">
+                    <h4 class="font-bold text-red-400 mb-2">Authentication process </h4>
+                    <p class="text-xs text-slate-400 italic">"Verifying the identity of a user or system." </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card p-8 rounded-3xl shadow-2xl">
+            <div class="flex flex-col items-center mb-6">
+                <h2 class="text-2xl font-bold mb-8">The Governance Hierarchy </h2>
+                
+                <div class="w-full space-y-3">
+                    <div class="flex items-center p-4 bg-slate-800/40 rounded-xl">
+                        <span class="w-24 font-bold text-sky-400 uppercase text-xs">Policy</span>
+                        <span class="text-slate-300 text-sm italic">"Broad intent: Should we encrypt?" </span>
+                    </div>
+                    <div class="flex items-center p-4 bg-slate-800/40 rounded-xl">
+                        <span class="w-24 font-bold text-sky-400 uppercase text-xs">Standard</span>
+                        <span class="text-slate-300 text-sm italic">"Requirements: Use AES." </span>
+                    </div>
+                    <div class="flex items-center p-4 bg-slate-800/40 rounded-xl">
+                        <span class="w-24 font-bold text-sky-400 uppercase text-xs">Procedure</span>
+                        <span class="text-slate-300 text-sm italic">"Steps: Log in, enter enable mode." </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-indigo-600 p-8 rounded-3xl shadow-2xl relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="mr-3">🚀</span> Professional Guidelines
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <ul class="space-y-3">
+                        <li class="flex items-center">✅ Use Microsoft Defender for Cloud </li>
+                        <li class="flex items-center">✅ Microsoft Entra PIM for accounts </li>
+                        <li class="flex items-center">✅ Just-in-Time (JIT) access </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        </section>
+
+    </main>
+
+    <footer class="mt-12 text-center text-slate-500 text-xs">
+        <p>© 2026 Security Study Materials | Week 4 Module Summary</p>
+    </footer>
+
+</body>
+</html>
